@@ -9,7 +9,7 @@ import (
 	"github.com/turbot/steampipe-plugin-sdk/plugin"
 )
 
-func connect(ctx context.Context, d *plugin.QueryData) (*talend.Client, error) {
+func connect(ctx context.Context, d *plugin.QueryData) (*talendcloud.Client, error) {
 
 	base_url := os.Getenv("TALEND_BASE_URL")
 	api_key := os.Getenv("TALEND_API_KEY")
@@ -19,8 +19,8 @@ func connect(ctx context.Context, d *plugin.QueryData) (*talend.Client, error) {
 		if talendConfig.BaseUrl != nil {
 			base_url = *talendConfig.BaseUrl
 		}
-		if talendConfig.Email != nil {
-			uapi_key = *talendConfig.ApiKey
+		if talendConfig.ApiKey != nil {
+			api_key = *talendConfig.ApiKey
 		}
 	}
 
@@ -33,10 +33,11 @@ func connect(ctx context.Context, d *plugin.QueryData) (*talend.Client, error) {
 	}
 
 	// You can set custom *http.Client here
-	client, err := talend.NewClient(base_url, api_key)
-	if err != nil {
-		return nil, err
-	}
+	// client, err := talendcloud.NewClient(base_url, api_key)
+	client := talendcloud.NewClient(base_url, api_key)
+	//if err != nil {
+//		return nil, err
+//	}
 
-	return client, nil
+	return &client, nil
 }

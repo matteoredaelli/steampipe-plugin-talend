@@ -1,8 +1,8 @@
-module guthub.com/matteoredaelli/steampipe-plugin-talend
+module github.com/matteoredaelli/steampipe-plugin-talend
 
 go 1.17
 
-replace github.com/matteoredaelli/steampipe-plugin-talend => ../steampipe-plugin-talend
+//replace github.com/matteoredaelli/steampipe-plugin-talend => ../steampipe-plugin-talend
 
 require (
 	github.com/matteoredaelli/talendcloud-go v0.1.5
@@ -28,6 +28,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.9.1 // indirect
 	github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb // indirect
 	github.com/iancoleman/strcase v0.1.2 // indirect
+	github.com/matteoredaelli/steampipe-plugin-talend v0.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.4 // indirect
 	github.com/mattn/go-isatty v0.0.10 // indirect
 	github.com/mattn/go-runewidth v0.0.7 // indirect

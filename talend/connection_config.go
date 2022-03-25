@@ -6,7 +6,7 @@ import (
 )
 
 type talendConfig struct {
-	BaseURL *string `cty:"base_url"`
+	BaseUrl *string `cty:"base_url"`
 	ApiKey  *string `cty:"api_key"`
 }
 

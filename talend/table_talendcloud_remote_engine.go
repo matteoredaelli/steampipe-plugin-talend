@@ -42,7 +42,7 @@ func listRemoteEngine(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrat
 		return nil, err
 	}
 	// TODO - The library doesn't support paging for input?
-	remote_engines, err := conn.Get("runtimes/remote-engines", nil)_
+	remote_engines, err := conn.Get("runtimes/remote-engines", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func getRemoteEngine(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrate
 	}
 	quals := d.KeyColumnQuals
 	id := quals["id"].GetInt64Value()
-	result, err := conn.Get("runtimes/remote-engines/" + id, nil)
+	result, err := conn.Get("runtimes/remote-engines/" + string(id), nil)
 	if err != nil {
 		return nil, err
 	}
