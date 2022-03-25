@@ -1,7 +1,7 @@
 package main
 
 import (
-//	"github.com/matteoredaelli/steampipe-plugin-talend/talend"
+	"github.com/matteoredaelli/steampipe-plugin-talend/talend"
 	"github.com/turbot/steampipe-plugin-sdk/plugin"
 )
 
