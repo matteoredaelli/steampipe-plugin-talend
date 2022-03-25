@@ -5,7 +5,7 @@ import (
 	"errors"
 	"os"
 
-	"github.com/matteoredaelli/talend-go"
+	"github.com/matteoredaelli/talendcloud-go"
 	"github.com/turbot/steampipe-plugin-sdk/plugin"
 )
 
