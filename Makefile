@@ -1,2 +1,2 @@
 install:
-	go build -o  ~/.steampipe/plugins/hub.steampipe.io/plugins/matteoredaelli/talend@latest/steampipe-plugin-talend.plugin *.go
+	go build -o  ~/.steampipe/plugins/local/talend/talend.plugin *.go

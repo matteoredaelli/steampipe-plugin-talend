@@ -2,7 +2,8 @@ package talend
 
 import (
 	"context"
-
+	"encoding/json"
+	"fmt"
 	"github.com/turbot/steampipe-plugin-sdk/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/plugin"
 )
@@ -42,11 +43,14 @@ func listRemoteEngine(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrat
 		return nil, err
 	}
 	// TODO - The library doesn't support paging for input?
-	remote_engines, err := conn.Get("runtimes/remote-engines", nil)
+	respJson, err := conn.Get("runtimes/remote-engines", nil)
 	if err != nil {
 		return nil, err
 	}
-	for _, t := range remote_engines {
+	fmt.Println(respJson)
+	var result []map[string]interface{}
+	json.Unmarshal([]byte(respJson), &result)
+	for _, t := range result {
 		d.StreamListItem(ctx, t)
 	}
 	return nil, nil
@@ -58,10 +62,12 @@ func getRemoteEngine(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrate
 		return nil, err
 	}
 	quals := d.KeyColumnQuals
-	id := quals["id"].GetInt64Value()
-	result, err := conn.Get("runtimes/remote-engines/" + string(id), nil)
+	id := quals["id"].GetStringValue()
+	respJson, err := conn.Get("runtimes/remote-engines/"+id, nil)
 	if err != nil {
 		return nil, err
 	}
+	var result []map[string]interface{}
+	json.Unmarshal([]byte(respJson), &result)
 	return result, nil
 }
